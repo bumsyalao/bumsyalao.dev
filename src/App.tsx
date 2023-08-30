@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 function App() {
+  const myRef = useRef<HTMLAudioElement>(null);
 
+  const onPlay = () => {
+    const node: any = myRef.current;
+    node.play();
+  }
   return (
     <div>
       <div className="grad" id="top">
@@ -12,7 +17,18 @@ function App() {
         </div>
         <div className="land wow animted fadeInUp">
           <div className="content">
-            <h1 className="heading">Hi, I'm Ruth  &#128105;&#127995;&#8205;&#128187;</h1>
+            <h1 className="heading">Hi, I'm Bunmi  &#128105;&#127995;&#8205;&#128187;</h1>
+            <div className="translation">
+              <p className="translation-text">/buːmi/</p>
+              <button className="translation-btn" onClick={onPlay}>
+                <audio ref={myRef} id="myAudio">
+                  <source src="https://res.cloudinary.com/dcpfdxsly/video/upload/v1588351970/Bunmi_sptkgn.m4a" type="audio/ogg" />
+                  <source src="https://res.cloudinary.com/dcpfdxsly/video/upload/v1588351970/Bunmi_sptkgn.m4a" type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+                <span className="material-icons">volume_up</span>
+              </button>
+            </div>
             <a className="btn-large min waves-effect see-more" href="#design">see more</a></div>
         </div>
         <div className="container design" id="design">
